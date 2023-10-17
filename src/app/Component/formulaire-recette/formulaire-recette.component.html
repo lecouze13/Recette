@@ -1,0 +1,153 @@
+<form class="formulaire_ajout_recette" (submit)="send_ajout_recette()" *ngIf="isAffiched===true">
+    <h3 class="titre_ajout_recette">Formulaire d'ajouts de recettes</h3>
+    <div class="container_formulaire_ajout_recette">
+        <div class="formulaire_ajout_recette_gauche">
+            <br><br>
+            <label for="NomRecette">Nom de la recette :</label><br>
+            <input type="text" id="NomRecette" name="NomRecette"><br><br>
+            <label for="ingredients">Ingrédients :</label><br>
+            <div *ngIf="Data_enum && Data_enum.Ingredient" style="height: 222px; overflow-y: scroll;background: white;">
+
+                <div *ngFor="let ingredient of Data_enum.Ingredient">
+                    <input type="checkbox" id="{{ ingredient }}" name="ingredients" [value]="ingredient"
+                        (change)="onIngredientSelectionChange($event)" class="checkbox_ajout_recette">
+                    <label class="full-width-label" for="{{ ingredient }}">{{ ingredient }}</label><br>
+                </div>
+            </div>
+            <!-- Affiche les éléments sélectionnés -->
+            <div>
+                Ingrédients sélectionnés: {{ selectedIngredients.join(', ') }}
+            </div>
+
+            <br><br>
+
+            <label for="proteine">Type de protéine :</label><br>
+            <select id="proteine" name="proteine">
+
+                <ng-container *ngIf="Data_enum && Data_enum.ProteineType">
+                    <option *ngFor="let proteineType of Data_enum.ProteineType" [value]="proteineType">{{ proteineType
+                        }}
+                    </option>
+                </ng-container>
+            </select>
+
+            <br><br>
+
+            <label for="glucide">Type de glucide :</label><br>
+            <select id="glucide" name="glucide">
+
+                <ng-container *ngIf="Data_enum && Data_enum.GlucideType">
+                    <option *ngFor="let glucideType of Data_enum.GlucideType" [value]="glucideType">{{ glucideType
+                        }}
+                    </option>
+                </ng-container>
+            </select>
+            <br><br>
+
+            <label for="Sauce">Type de Sauce :</label><br>
+            <select id="Sauce" name="Sauce">
+
+                <ng-container *ngIf="Data_enum && Data_enum.SauceType">
+                    <option *ngFor="let sauceType of Data_enum.SauceType" [value]="sauceType">{{ sauceType
+                        }}
+                    </option>
+                </ng-container>
+            </select>
+            <br><br>
+            <label for="Epice">Epice ?</label><br>
+            <select id="Epice" name="Epice">
+                <option value=""></option>
+                <option value=1>Oui</option>
+                <option value=0>Non</option>
+
+            </select>
+            <br><br>
+            <label for="Favoris">Favoris </label><br>
+            <select id="Favoris" name="Favoris">
+                <option value=""></option>
+                <option value="true">Oui</option>
+                <option value="false">Non</option>
+
+            </select>
+            <br><br>
+
+            <!-- <select id="PaysOrigin" name="PaysOrigin">
+                <option value=""></option>
+                <option value="France">France</option>
+                <option value="Italie">Italie</option>
+                <option value="Espagne">Espagne</option>
+                <option value="Chine">Chine</option>
+                <option value="Japon">Japon</option>
+
+            </select> -->
+            <label for="PaysOrigin">Pays d'origine / Continent </label><br>
+            <div>
+                <h3>Pays d'origine / Continent </h3>
+                <div class="div_pays">
+                    <label *ngFor="let country of countryList" class="">
+                        <input type="radio" name="selectedCountry" [value]="country.code">
+                        <img [src]="'../assets/imagesPays/' + country.code.toLowerCase() + '.png'" alt="drapeau">
+                        {{ country.name }}
+
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="formulaire_ajout_recette_droite">
+            <br><br>
+            <label for="TempsPreparation">Temps de Preparation (min)</label><br>
+            <input type="number" id="TempsPreparation" name="TempsPreparation"><br><br>
+            <!-- <input type="file"> -->
+            <!-- <br><br> -->
+
+            <label for="link">lien de l'image</label><br>
+            <textarea type="text" id="link" name="link" size="500"></textarea>
+            <br><br>
+
+
+
+
+            <input type="submit" value="Soumettre" class="btn btn-primary" style="margin: 0px 36%;">
+        </div>
+    </div>
+</form>
+
+<form class="formulaire_ajout_recette" (submit)="send_ajout_recette_etape()" *ngIf="isAffichedEtape===true">
+    <h3 class="titre_ajout_recette">Formulaire d'ajouts de recettes</h3>
+    <div class="container_formulaire_ajout_recette">
+
+
+        <br><br>
+
+        <!-- 
+//ici tu me fait le ng for ingredient -->
+
+        <!-- Utilise *ngFor pour afficher les champs pour chaque ingrédient sélectionné -->
+        <!-- Utilise *ngFor pour afficher les champs pour chaque ingrédient sélectionné -->
+        <div *ngFor="let ingredient of selectedIngredients; let i = index" class="ingredientQuantite"
+            [ngClass]="{ 'even-row': i % 2 === 0, 'odd-row': i % 2 !== 0 }">
+            <div><label for="ingredient{{ i }}">Ingrédient {{ i + 1 }} :</label>
+                {{selectedIngredients[i]}}
+            </div>
+            <div>
+                <label for="quantite{{ i }}">Quantité :</label>
+                <input type="text" id="quantite{{ i }}" name="quantite{{ i }}" [(ngModel)]="selectedQuantities[i]">
+            </div>
+            <br>
+        </div>
+        <div class="etape" *ngFor="let etape of etapes; let i = index">
+            <label for="etape{{ i }}">Étape {{ i + 1 }} :</label>
+            <input type="text" id="etape{{ i }}" name="etape{{ i }}">
+            <!-- <button (click)="supprimerEtape(i)">Supprimer</button> -->
+            <br>
+        </div>
+
+
+
+        <div (click)="ajouterEtape()">+</div>
+
+
+        <input type="submit" value="Soumettre" class="btn btn-primary" style="margin: 0px 36%;">
+    </div>
+
+</form>

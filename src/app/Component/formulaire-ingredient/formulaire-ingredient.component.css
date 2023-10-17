@@ -1,0 +1,41 @@
+.formulaire_ajout_recette {
+    margin-top: 65px;
+    background-color: rgb(227 242 253);
+    color: black;
+    border-radius: 25px;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)scale(1.5);
+    z-index: 50;
+    font-size: 20px;
+    width: 45%;
+}
+
+.container_formulaire_ajout_recette {}
+
+.formulaire_ajout_recette_gauche,
+.formulaire_ajout_recette_droite {}
+
+.titre_ajout_recette {
+    text-align: center;
+    margin-bottom: -20px;
+    border-bottom: 1px solid white;
+}
+
+.formulaire_ajout_recette select,
+textarea {
+    width: 97%;
+    /* Double la largeur des éléments select */
+}
+
+/* .Bouton_affichage_from_ajout_recette {
+    position: absolute;
+    right: 10%;
+    top: 15.5%;
+    z-index: 5000;
+
+    border: none;
+    background: #e3f2fd;
+} */

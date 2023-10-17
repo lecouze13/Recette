@@ -1,0 +1,47 @@
+.container_all_card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin: 20px;
+    justify-content: center;
+    gap: 30px;
+    /* Ajoute un espacement de 20px entre les éléments enfants */
+
+}
+
+.card {}
+
+.favori {
+    fill: darkorange;
+    /* Couleur jaune pour le favori */
+}
+
+.non-favori {
+    fill: gray;
+    /* Couleur grise pour le non-favori */
+}
+
+.green-star {
+    color: black;
+    /* Couleur verte par défaut */
+}
+
+.button_favoris {
+
+    /* Assurez-vous que le bouton a une largeur et une hauteur pour que le SVG soit visible */
+    background: none;
+    /* Assurez-vous qu'il n'y a pas de fond */
+    border: none;
+    /* Assurez-vous qu'il n'y a pas de bordure */
+    padding: 0;
+
+}
+
+.alignement_favoris_recette {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-content: stretch; */
+    align-items: flex-start;
+}

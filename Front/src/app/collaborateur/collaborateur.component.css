@@ -1,0 +1,58 @@
+#first-row {
+  background-color: black;
+  color: white;
+}
+
+.gray-row {
+  background-color: #E0E0E0;
+}
+
+.white-row {
+  background-color: white;
+}
+
+.mat-elevation-z8 {
+
+  width: 50%;
+  margin: 0 10%;
+  margin-bottom: 50px;
+}
+
+.tableau {
+  width: 80%;
+
+}
+
+.center {
+  text-align: center;
+}
+
+.congeValider {
+  font-size: 21px;
+  width: 85%;
+}
+
+.mat-mdc-table tbody,
+.mat-mdc-table tfoot,
+.mat-mdc-table thead,
+.mat-mdc-cell,
+.mat-mdc-footer-cell,
+.mat-mdc-header-row,
+.mat-mdc-row,
+.mat-mdc-footer-row,
+.mat-mdc-table .mat-mdc-header-cell {
+  background: inherit;
+  font-size: 19px;
+}
+
+.back {
+  border: none;
+  background: inherit;
+  transform: scale(1.5);
+}
+
+.margin10 {
+  margin: 0 8%;
+  font-style: italic;
+  font-size: 21px;
+}

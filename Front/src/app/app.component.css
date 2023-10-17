@@ -1,0 +1,11 @@
+.text_login {
+    margin-top: 100px;
+}
+
+#btnDeconnexion {
+    position: absolute;
+    top: 1.3%;
+    right: 5%;
+    height: 50px;
+    width: 120px;
+}

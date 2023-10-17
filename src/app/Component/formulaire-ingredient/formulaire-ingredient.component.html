@@ -1,0 +1,26 @@
+<form class="formulaire_ajout_recette" (submit)="send_ajout_ingredient()" *ngIf="isAffichedIngredient===true">
+    <h3 class="titre_ajout_recette">Formulaire d'ajouts d'ingredients</h3>
+    <div class="container_formulaire_ajout_recette">
+        <br><br>
+        <label for="NomIngredient">Nom de l'ingredient :</label><br>
+        <input type="text" id="NomIngredient" name="NomIngredient"><br><br>
+
+        <label for="Type">Type d'ingrédient :</label><br>
+        <select id="Type" name="Type">
+            <option value=""></option>
+            <ng-container *ngIf="Data_enum && Data_enum.Type">
+                <option *ngFor="let type of Data_enum.Type" [value]="type">{{ type }}
+                </option>
+            </ng-container>
+        </select>
+
+        <br><br>
+        <label for="calorie">calorie(kcal)</label><br>
+        <input type="calorie" id="calorie" name="calorie"><br><br>
+
+
+
+        <input type="submit" value="Soumettre" class="btn btn-primary" style="margin: 0px 36%;">
+
+    </div>
+</form>

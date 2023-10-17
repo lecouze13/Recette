@@ -1,0 +1,26 @@
+<div class="form_register_login" *ngIf="is_afficher_Login==false">
+    <h6> Choisissez si vous voulez vous connecter en tant que <b>Collaborateur</b>/<b>RH</b> ou créer un compte
+        <b>Collaborateur.</b></h6>
+
+    <div class="flex_button"><button class="button_choix" (click)="loginC()">
+            Connexion Collaborateur</button>
+
+        <button class="button_choix" (click)="loginRH()">Connexion RH</button>
+
+        <button class="button_choix" (click)="CreationCompteC()">
+            Creation compte Collaborateur</button>
+
+        <!-- <button class="button_choix" (click)="CreationCompteRH()">
+            Creation compte RH</button>
+-->
+    </div>
+</div>
+<div style="margin-top: 100px;">
+    <app-login-collaborateur *ngIf="Boolean_CreationCompteC===true"></app-login-collaborateur>
+    <app-login-rh *ngIf="Boolean_CreationCompteRH===true"></app-login-rh>
+
+
+
+    <app-rh *ngIf="Boolean_loginRH===true"></app-rh>
+    <app-collaborateur *ngIf="Boolean_loginC===true"></app-collaborateur>
+</div>
