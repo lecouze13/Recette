@@ -11,6 +11,8 @@ import { countryList } from './country-list'; // Assurez-vous que le chemin d'im
 export class FormulaireRecetteComponent {
   countryList = countryList;
 
+  selectedCountry: string = ''; // Initialisez avec une valeur par défaut
+
   Data_enum: any;
   @Input() isAffiched = false; //affiche le 1er formulaire ajotu recette
   isAffichedEtape = false; // affiche le 2eme formulaire ajout recette
@@ -98,7 +100,6 @@ export class FormulaireRecetteComponent {
     console.log(concatenatedEtape);
     const NomRecetteValue = (<HTMLInputElement>document.getElementById('NomRecette')).value;
     const TempsPrepaValue = (<HTMLInputElement>document.getElementById('TempsPreparation')).value;
-    const PaysOrigineValue = (<HTMLInputElement>document.getElementById('PaysOrigin')).value;
     const FavorisValue = (<HTMLInputElement>document.getElementById('Favoris')).value;
     const imgValue = (<HTMLInputElement>document.getElementById('link')).value;
     const proteine = (<HTMLSelectElement>document.getElementById('proteine')).value;
@@ -109,14 +110,14 @@ export class FormulaireRecetteComponent {
     this.formData.NomRecette = NomRecetteValue;
     this.formData.Ingredient = this.selectedIngredientsString;
     this.formData.TempsPrepa = TempsPrepaValue;
-    this.formData.PaysOrigine = PaysOrigineValue;
+    this.formData.PaysOrigine = this.selectedCountry;
     this.formData.Favoris = FavorisValue;
     this.formData.img = imgValue;
     this.formData.ProteineType = proteine;
     this.formData.GlucideType = glucide;
     this.formData.SauceType = sauce;
     this.formData.Epices = epices;
-    this.formData.PaysOrigine = PaysOrigineValue;
+
     this.formData.Favoris = FavorisValue;
     this.formData.IngredientQuantite = result;
     this.formData.etapes = result2;
@@ -141,6 +142,10 @@ export class FormulaireRecetteComponent {
   ajouterEtape() {
     this.etapes.push('');
   }
-
+  // Fonction pour gérer la sélection
+  onCountrySelected(value: string) {
+    this.selectedCountry = value;
+    console.log(this.selectedCountry);
+  }
 
 }

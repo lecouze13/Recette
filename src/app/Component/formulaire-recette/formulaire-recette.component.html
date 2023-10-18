@@ -82,16 +82,17 @@
             </select> -->
             <label for="PaysOrigin">Pays d'origine / Continent </label><br>
             <div>
-                <h3>Pays d'origine / Continent </h3>
+
                 <div class="div_pays">
                     <label *ngFor="let country of countryList" class="">
-                        <input type="radio" name="selectedCountry" [value]="country.code">
+                        <input type="radio" name="selectedCountry" [value]="country.name" [(ngModel)]="selectedCountry"
+                            (change)="onCountrySelected(country.name)">
                         <img [src]="'../assets/imagesPays/' + country.code.toLowerCase() + '.png'" alt="drapeau">
                         {{ country.name }}
-
                     </label>
                 </div>
             </div>
+
         </div>
         <div class="formulaire_ajout_recette_droite">
             <br><br>
@@ -119,7 +120,7 @@
 
         <br><br>
 
-        <!-- 
+        <!--
 //ici tu me fait le ng for ingredient -->
 
         <!-- Utilise *ngFor pour afficher les champs pour chaque ingrédient sélectionné -->
