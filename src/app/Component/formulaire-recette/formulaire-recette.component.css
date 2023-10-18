@@ -1,0 +1,105 @@
+.formulaire_ajout_recette {
+    margin-top: 105px;
+    background-color: rgb(227 242 253);
+    color: black;
+    border-radius: 25px;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)scale(1.5);
+    z-index: 50;
+    font-size: 20px;
+    width: 45%;
+    overflow-y: scroll;
+    height: 70%;
+}
+
+.container_formulaire_ajout_recette {}
+
+.formulaire_ajout_recette_gauche,
+.formulaire_ajout_recette_droite {}
+
+.titre_ajout_recette {
+    text-align: center;
+    margin-bottom: -20px;
+    border-bottom: 1px solid white;
+}
+
+.formulaire_ajout_recette select,
+textarea {
+    width: 97%;
+    /* Double la largeur des éléments select */
+}
+
+/* .Bouton_affichage_from_ajout_recette {
+    position: absolute;
+    right: 10%;
+    top: 15.5%;
+    z-index: 5000;
+
+    border: none;
+    background: #e3f2fd;
+} */
+.checkbox_ajout_recette {
+    display: none;
+}
+
+.full-width-label {
+    width: 100%;
+    display: block;
+    margin-bottom: -35px;
+    height: 33px;
+}
+
+input[type="checkbox"]:checked+label {
+    background-color: lightblue;
+
+    /* Changer la couleur de fond au choix */
+}
+
+input[type="checkbox"]:hover {
+    background-color: blue;
+
+    /* Changer la couleur de fond au choix */
+}
+
+.ingredientQuantite {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.even-row {
+    background-color: #d3d3d361;
+}
+
+.odd-row {
+    background-color: white;
+}
+
+
+#PaysOrigin option {
+    padding-left: 25px;
+    /* Ajoutez de la marge à gauche pour les drapeaux */
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+#PaysOrigin {
+    padding-left: 30px;
+    /* Ajustez la valeur en fonction de la largeur de vos drapeaux */
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    /* Ajustez la position des drapeaux */
+}
+
+.div_pays {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    border: 2px solid grey;
+    overflow-y: scroll;
+    height: 350px;
+    background: white;
+}

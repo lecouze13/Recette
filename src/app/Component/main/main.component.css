@@ -1,0 +1,19 @@
+.nav-item {
+    margin-right: 20px;
+}
+
+.Bouton_affichage_from_ajout_recette {
+    border: none;
+    background: #e3f2fd;
+    transition: background-color 0.3s ease;
+}
+
+.Bouton_affichage_from_ajout_recette:hover {
+    font-weight: bold;
+
+}
+
+.Bouton_affichage_from_ajout_recette:active {
+    background: #bbdefb;
+
+}
