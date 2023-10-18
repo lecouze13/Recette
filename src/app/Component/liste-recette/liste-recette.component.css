@@ -45,3 +45,12 @@
     /* align-content: stretch; */
     align-items: flex-start;
 }
+
+.bouton_voir_recette {
+    text-decoration: none;
+    background-color: #e3f2fd;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+    /* color: darkgray; */
+    font-weight: 400;
+}

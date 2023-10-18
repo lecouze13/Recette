@@ -58,7 +58,8 @@ export class ListeRecetteComponent {
     });
   }
   goToPage(recipeId: string) {
-    this.router.navigate(['/recette', recipeId]); // Utilisez '/recette/:id' avec le paramètre
+    this.router.navigate(['/recette', recipeId]);
+    // Utilisez '/recette/:id' avec le paramètre
   }
   envoyerRequete(favorie: any, idRecette: any) {
     const url = 'https://lorenzo-geano-etu.pedaweb.univ-amu.fr/extranet/CuisineLOLO/favoris.php';

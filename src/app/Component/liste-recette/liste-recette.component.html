@@ -24,12 +24,14 @@
 
                     </button>
                 </div>
-                <h5 class="card-title">{{ recetteItem['Nom recette'] }}</h5>
+                <h5 class="card-title" style="height: 73px;">{{ recetteItem['Nom recette'] }}<br>
+                    Note: {{recetteItem['Note']}}/10
+                </h5>
                 <img class="card-img-top" [src]="'' + recetteItem['image']" [alt]="'' + recetteItem['image']" style="width: 287px;
                 height: 224px;">
 
 
-                <div class="card-body" style="height: 130px;">
+                <div class="card-body" style="height: 146px;">
                     <b> Ingrédients</b>
                     <p class="card-text">{{ recetteItem['Ingrédient'].join(', ') }}</p>
 
@@ -44,7 +46,8 @@
 
                 </ul>
                 <div class="card-body">
-                    <button (click)="goToPage(recetteItem['ID Recipe'])">Voir la recette</button>
+                    <button (click)="goToPage(recetteItem['ID Recipe'])" class="bouton_voir_recette">Voir la
+                        recette</button>
                     <a href="#" class="card-link">like</a>
                     <a href="#" class="card-link">dislike</a>
                 </div>
