@@ -1,15 +1,23 @@
-.li_etape_recette {
+.li_etape_recette,
+.li_etape_recettePrep {
     list-style: none;
 }
 
 .header_detail_recette {
     text-align: center;
-    /* border: 4px solid black; */
-    /* Ajoutez une bordure */
+
+    /* Créez une bordure inférieure personnalisée avec un dégradé de noir au début et gris à la fin */
+
+
+
+    /* Réduisez la taille de la bordure à 80 % de la taille initiale */
+
     /* Supprimez la bordure en bas */
     grid-area: 1 / 1 / 2 / 6;
-    /* Ajoutez une ombre en bas */
+    margin: auto;
+
 }
+
 
 
 .main_detail_recette {
@@ -21,7 +29,8 @@
     margin: auto;
     margin-top: 40px;
 
-    width: 45%;
+    width: 700px;
+    height: 800px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
     background: #dfdee3;
     z-index: 1;
@@ -32,22 +41,26 @@
 
 
 .Gauche_detail_recette {
-
+    margin-left: 20px;
     grid-area: 2 / 1 / 6 / 3;
-    /* border-right: solid 4px black; */
-    /* box-shadow: 4px 0 4px rgba(0, 0, 0, 0.4); */
+    border-right: solid 2px grey;
+
+    border-top: 4px solid;
+    border-bottom: 4px solid;
+
 }
 
 .droite_detail_recette {
     padding: 15px;
     grid-area: 2 / 3 / 6 / 6;
     /* border-bottom: solid 4px black; */
-
-    /* Ajoute une ombre à droite */
+    border-top: 4px solid;
+    border-bottom: 4px solid;
 }
 
 .footer {
     grid-area: 6 / 1 / 7 / 6;
+    text-align: center;
 }
 
 .container_detail_recette {
@@ -67,4 +80,38 @@
     position: absolute;
     z-index: 50;
     /* Position absolue */
+}
+
+.quantite {
+    width: 38%;
+}
+
+.nom {
+    width: 38%;
+}
+
+.li_etape_recette {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pair-background {
+    background-color: lightgrey;
+    color: black;
+    border-bottom: solid 1px grey;
+
+}
+
+.impair-background {
+
+    border-bottom: solid 1px grey;
+
+}
+
+.Gauche_detail_recette h5 {
+    margin-top: 19px;
 }

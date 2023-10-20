@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Input } from '@ckeditor/ckeditor5-typing';
+import { countryList } from '../formulaire-recette/country-list'; // Assurez-vous que le chemin d'importation est correct
+
 @Component({
   selector: 'app-recette',
   templateUrl: './recette.component.html',
@@ -12,6 +14,9 @@ export class RecetteComponent implements OnInit {
   customData: any;
   recette: any; // Propriété pour stocker les données de la recette
   dataRecette2: any;
+
+  countryLista = countryList;
+
   constructor(private route: ActivatedRoute, private http: HttpClient) {
 
   }

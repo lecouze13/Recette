@@ -9,27 +9,41 @@
         </div>
 
         <div class="Gauche_detail_recette">
-            <h3>{{ dataRecette2['Nom recette'] }}</h3>
+            <h5>{{ dataRecette2['Nom recette'] }}</h5>
 
-            <p>Pays d'origine: {{ dataRecette2['PaysOrigine'] }}</p>
+            <p>Pays d'origine {{ dataRecette2['PaysOrigine'] }}
+                <label *ngFor="let country of countryLista" class="">
+                    <img *ngIf="dataRecette2['PaysOrigine'] === country.name"
+                        [src]="'../assets/imagesPays/' + country.code.toLowerCase()+ '.png'" alt="drapeau">
+                </label>
+
+
+            </p>
+            <p>Portion : {{ dataRecette2['Portion'] }} Personnes</p>
             <!-- <p>Favoris: {{ dataRecette2['Favoris'] }}</p> -->
-            <p>Note: {{ dataRecette2['Note'] }}</p>
+            <p>Note: {{ dataRecette2['Note'] }}/10 </p>
+
             <p>Temps de préparation: {{ dataRecette2['TempsPrepa'] }} min</p>
+            <p>Temps de Cuisson: {{ dataRecette2['Cuisson'] }} min</p>
+            <p> Ustensils et appareils: {{ dataRecette2['TempsPrepa'] }}</p>
         </div>
 
 
         <div class="droite_detail_recette">
 
             <div *ngIf="recette">
-                <h3>Ingrédients :</h3>
+                <h3>Ingrédients </h3>
                 <ul>
-                    <li *ngFor="let ingredient of recette.IngredientQuantite.split('|')" class="li_etape_recette">
-                        {{ ingredient }}
+                    <li *ngFor="let ingredient of recette.IngredientQuantite.split('|'); let even = even"
+                        class="li_etape_recette" [ngClass]="{'pair-background': even, 'impair-background': !even}">
+                        <span class="quantite">{{ ingredient.split(':')[1] }}</span>
+                        <span class="nom">{{ ingredient.split(':')[0] }}</span>
                     </li>
                 </ul>
-                <h3>Étapes :</h3>
-                <ul>
-                    <li *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]" class="li_etape_recette">
+                <h3>Préparation </h3>
+                <ul style="
+                font-size: 15px;">
+                    <li *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]" class="li_etape_recettePrep">
                         <ng-container *ngIf="recette['Etape' + i]">
 
                             {{ recette['Etape' + i] }}
@@ -38,6 +52,6 @@
                 </ul>
             </div>
         </div>
-        <div class="footer"> eodeiozdjedi</div>
+        <div class="footer"> https://recettelolo.netlify.app/</div>
     </div>
 </div>
