@@ -127,13 +127,13 @@ export class FormulaireRecetteComponent {
       .subscribe(response => {
         // Traiter la réponse ici si nécessaire
         console.log(response);
-        location.reload();
+        // location.reload();
       },
         error => {
           // Gérer les erreurs ici et afficher les détails de l'erreur
           console.error(error.error.text);
           console.error(error);
-          location.reload();
+          // location.reload();
         });
 
   }
