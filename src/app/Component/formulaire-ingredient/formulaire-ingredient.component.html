@@ -1,12 +1,20 @@
 <form class="formulaire_ajout_recette" (submit)="send_ajout_ingredient()" *ngIf="isAffichedIngredient===true">
-    <h3 class="titre_ajout_recette">Formulaire d'ajouts d'ingredients</h3>
+
+    <div class="Titre_close_boutton">
+      <h3 class="titre_ajout_recette">Formulaire d'ajouts d'ingredients</h3>
+      <button type="button" class="btn-close" aria-label="Close"(click)="close_formulaire_recette()"></button>
+
+    </div>
     <div class="container_formulaire_ajout_recette">
         <br><br>
-        <label for="NomIngredient">Nom de l'ingredient :</label><br>
-        <input type="text" id="NomIngredient" name="NomIngredient"><br><br>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="NomIngredient" placeholder="Pot au Feu"name=NomIngredient>
+          <label for="NomIngredient">Nom de la recette :</label>
+        </div>
 
         <label for="Type">Type d'ingrédient :</label><br>
-        <select id="Type" name="Type">
+
+        <select id="Type" name="Type"class="form-select">
             <option value=""></option>
             <ng-container *ngIf="Data_enum && Data_enum.Type">
                 <option *ngFor="let type of Data_enum.Type" [value]="type">{{ type }}
@@ -15,8 +23,12 @@
         </select>
 
         <br><br>
-        <label for="calorie">calorie(kcal)</label><br>
-        <input type="calorie" id="calorie" name="calorie"><br><br>
+        <!-- <label for="calorie">calorie(kcal)</label><br>
+        <input type="calorie" id="calorie" name="calorie"><br><br> -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="calorie" placeholder="Pot au Feu"name=calorie>
+          <label for="calorie">Calorie(kcal)</label>
+        </div>
 
 
 

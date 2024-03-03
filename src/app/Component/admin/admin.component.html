@@ -1,0 +1,97 @@
+<div class="div_header" style="width: 100%; margin: 0; padding: 0">
+  <nav class="navbar sticky-top navbar-light" style="background-color: #e3f2fd">
+    <a class="navbar-brand" href="" style="margin-left: 48px">Cuisine LOLO</a>
+    <ul class="nav justify-content-center" style="align-items: center">
+
+      <li class="nav-item">
+        <button
+          class="Bouton_affichage_from_ajout_recette"
+          (click)="GoToPAGEADMIN()"
+        >
+          Mode Admin
+        </button>
+      </li>
+
+
+      <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li> -->
+    </ul>
+  </nav>
+</div>
+<main class="container_all_card">
+  <input
+  class="form-control me-2"
+  type="text"
+  placeholder="Recherchez un ingrédient,une recette etc"
+  aria-label="Search"
+  [ngModel]="mymodel"
+  (ngModelChange)="valuechange($event)"
+/>
+{{ mymodel }}
+  <!-- [ngClass]="{'favori': recetteItem.isFavorite || recetteItem['Favoris'] === ' true', 'non-favori': !recetteItem.isFavorite}" -->
+  <div *ngFor="let recetteItem of recetteFiltered" class="card">
+    <div class="test">
+      <div class="card" style="width: 18rem">
+        <div class="alignement_favoris_recette">
+          <p>Recette N°{{ recetteItem["ID Recipe"] }}</p>
+          <button
+            class="deletteRecette"
+            (click)="Deleterecette(recetteItem)"
+
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
+            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+          </svg>
+          </button>
+        </div>
+        <h5 class="card-title" style="height: 73px">
+          {{ recetteItem["Nom recette"] }}<br />
+        </h5>
+        <img
+          class="card-img-top"
+          [src]="'' + recetteItem['image']"
+          [alt]="'' + recetteItem['image']"
+          style="width: 287px; height: 224px"
+        />
+
+        <div class="card-body" style="height: 146px">
+          <b> Ingrédients</b>
+          <p class="card-text">{{ recetteItem["Ingrédient"].join(", ") }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            Temps de préparation : {{ recetteItem["Temps de préparation"] }}
+          </li>
+          <li class="list-group-item">
+            Provenance :
+            <img
+              [src]="
+                '../assets/imagesPays/' +
+                recetteItem['Pays d\'origine'].toLowerCase() +
+                '.png'
+              "
+              alt="drapeau"
+            />
+          </li>
+        </ul>
+        <div class="card-body">
+          <div class="flex_like_recette">
+            <button
+              (click)="goToPage(recetteItem['ID Recipe'])"
+              class="bouton_voir_recette"
+            >
+              Voir la recette
+            </button>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

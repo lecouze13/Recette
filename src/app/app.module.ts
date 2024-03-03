@@ -18,6 +18,10 @@ import { FormulaireIngredientComponent } from './Component/formulaire-ingredient
 import { AppRoutingModule } from "./app-routing.module";
 import { RecetteComponent } from './Component/recette/recette.component';
 import { ListeRecetteComponent } from './Component/liste-recette/liste-recette.component';
+import { ADMINComponent } from './Component/admin/admin.component';
+import { LoginComponent } from './Component/login/login.component';
+import { RegisterComponent } from './Component/register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +32,9 @@ import { ListeRecetteComponent } from './Component/liste-recette/liste-recette.c
     FormulaireIngredientComponent,
     RecetteComponent,
     ListeRecetteComponent,
+    ADMINComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [

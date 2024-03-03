@@ -1,14 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MessageService } from '../../message.service';
 import { HttpClient } from '@angular/common/http';
 import { countryList } from './country-list'; // Assurez-vous que le chemin d'importation est correct
-
+import { MatLabel } from '@angular/material/form-field';
 @Component({
   selector: 'app-formulaire-recette',
   templateUrl: './formulaire-recette.component.html',
-  styleUrls: ['./formulaire-recette.component.css']
+  styleUrls: ['./formulaire-recette.component.css'],
 })
 export class FormulaireRecetteComponent {
+  @Output() close_formulaire = new EventEmitter<boolean>();
+  isFormulaireOpen = false;
+
   countryList = countryList;
 
   selectedCountry: string = ''; // Initialisez avec une valeur par défaut
@@ -33,14 +36,20 @@ export class FormulaireRecetteComponent {
     SauceType: '',
     Epices: '',
     IngredientQuantite: '',
-    etapes: ''
+    etapes: '',
+    Portion:'',
+    Note:'',
+    TempsCuisson:'',
   };
 
   onIngredientSelectionChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     console.log(target.value);
     if (this.selectedIngredients.includes(target.value)) {
-      this.selectedIngredients.splice(this.selectedIngredients.indexOf(target.value), 1);
+      this.selectedIngredients.splice(
+        this.selectedIngredients.indexOf(target.value),
+        1
+      );
       return;
     }
     this.selectedIngredients.push(target.value);
@@ -48,13 +57,16 @@ export class FormulaireRecetteComponent {
     console.log(this.selectedIngredientsString);
   }
 
-  constructor(private messageService: MessageService, private http: HttpClient) {
+  constructor(
+    private messageService: MessageService,
+    private http: HttpClient
+  ) {
     console.log(countryList);
+
     this.getEnum();
-    console.log('../assets/imagesPays/' + countryList[0].code.toLowerCase() + '.png')
-
-
-
+    console.log(
+      '../assets/imagesPays/' + countryList[0].code.toLowerCase() + '.png'
+    );
   }
   getEnum() {
     // Appeler la fonction du service pour récupérer les données
@@ -62,21 +74,18 @@ export class FormulaireRecetteComponent {
       this.Data_enum = data;
       // Vous pouvez maintenant traiter les données ici
       console.log(this.Data_enum); // Afficher les données dans la console
-
     });
   }
 
   send_ajout_recette() {
-
-
     this.isAffichedEtape = true;
+  }
+  close_formulaire_recette() {
+    this.isFormulaireOpen = true;
+    this.close_formulaire.emit(true);
   }
 
   send_ajout_recette_etape() {
-
-
-
-
     const concatenatedIngredients: string[] = [];
 
     for (let i = 0; i < this.selectedIngredients.length; i++) {
@@ -91,19 +100,37 @@ export class FormulaireRecetteComponent {
     console.log(this.etapes);
     const concatenatedEtape: string[] = [];
     for (let i = 0; i < this.etapes.length; i++) {
-      const cpt = (<HTMLInputElement>document.getElementById('etape' + i)).value;
+      const cpt = (<HTMLInputElement>document.getElementById('etape' + i))
+        .value;
       concatenatedEtape.push(cpt);
-
-
     }
     const result2 = concatenatedEtape.join('|');
     console.log(concatenatedEtape);
-    const NomRecetteValue = (<HTMLInputElement>document.getElementById('NomRecette')).value;
-    const TempsPrepaValue = (<HTMLInputElement>document.getElementById('TempsPreparation')).value;
-    const FavorisValue = (<HTMLInputElement>document.getElementById('Favoris')).value;
+    const NomRecetteValue = (<HTMLInputElement>(
+      document.getElementById('NomRecette')
+    )).value;
+    const TempsPrepaValue = (<HTMLInputElement>(
+      document.getElementById('TempsPreparation')
+    )).value;
+    const TempsCuisson = (<HTMLInputElement>(
+      document.getElementById('TempsCuisson')
+    )).value;
+    const Note = (<HTMLInputElement>(
+      document.getElementById('Note')
+    )).value;
+    const Portion = (<HTMLInputElement>(
+      document.getElementById('Portion')
+    )).value;
+
+
+
+    const FavorisValue = (<HTMLInputElement>document.getElementById('Favoris'))
+      .value;
     const imgValue = (<HTMLInputElement>document.getElementById('link')).value;
-    const proteine = (<HTMLSelectElement>document.getElementById('proteine')).value;
-    const glucide = (<HTMLSelectElement>document.getElementById('glucide')).value;
+    const proteine = (<HTMLSelectElement>document.getElementById('proteine'))
+      .value;
+    const glucide = (<HTMLSelectElement>document.getElementById('glucide'))
+      .value;
     const sauce = (<HTMLSelectElement>document.getElementById('Sauce')).value;
     const epices = (<HTMLSelectElement>document.getElementById('Epice')).value;
     // Attribuez les valeurs aux propriétés de formData
@@ -121,23 +148,30 @@ export class FormulaireRecetteComponent {
     this.formData.Favoris = FavorisValue;
     this.formData.IngredientQuantite = result;
     this.formData.etapes = result2;
+    this.formData.Note =Note;
+    this.formData.TempsCuisson=TempsCuisson;
+    this.formData.Portion=Portion
     console.log(this.formData);
     // Envoyer les données au format JSON
-    this.http.post('https://lorenzo-geano-etu.pedaweb.univ-amu.fr/extranet/CuisineLOLO/Ajout_recette.php', this.formData)
-      .subscribe(response => {
-        // Traiter la réponse ici si nécessaire
-        console.log(response);
-        location.reload();
-      },
-        error => {
+    this.http
+      .post(
+        'https://lorenzo-geano-etu.pedaweb.univ-amu.fr/extranet/CuisineLOLO/Ajout_recette.php',
+        this.formData
+      )
+      .subscribe(
+        (response) => {
+          // Traiter la réponse ici si nécessaire
+          console.log(response);
+         // location.reload();
+        },
+        (error) => {
           // Gérer les erreurs ici et afficher les détails de l'erreur
           console.error(error.error.text);
           console.error(error);
-          location.reload();
-        });
-
+          // location.reload();
+        }
+      );
   }
-
 
   ajouterEtape() {
     this.etapes.push('');
@@ -147,5 +181,4 @@ export class FormulaireRecetteComponent {
     this.selectedCountry = value;
     console.log(this.selectedCountry);
   }
-
 }

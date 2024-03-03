@@ -1,3 +1,29 @@
+.nav-item {
+  margin-right: 20px;
+}
+
+.Bouton_affichage_from_ajout_recette {
+  border: none;
+  background: #e3f2fd;
+  transition: background-color 0.3s ease;
+}
+
+.Bouton_affichage_from_ajout_recette:hover {
+  font-weight: bold;
+
+}
+
+.Bouton_affichage_from_ajout_recette:active {
+  background: #bbdefb;
+
+}
+.div_header {
+width: 100%;
+margin: 0;
+padding: 0;
+}
+
+
 .formulaire_ajout_recette {
   margin-top: 105px;
   background-color: rgb(227 242 253);
@@ -115,3 +141,71 @@ input[type="checkbox"]:hover {
   align-items: stretch;
 }
 
+.container_all_card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  margin: 20px;
+  justify-content: center;
+  gap: 30px;
+  /* Ajoute un espacement de 20px entre les éléments enfants */
+
+}
+
+.card {}
+
+.favori {
+  fill: darkorange;
+  /* Couleur jaune pour le favori */
+}
+
+.non-favori {
+  fill: gray;
+  /* Couleur grise pour le non-favori */
+}
+
+.green-star {
+  color: black;
+  /* Couleur verte par défaut */
+}
+
+.button_favoris {
+
+  /* Assurez-vous que le bouton a une largeur et une hauteur pour que le SVG soit visible */
+  background: none;
+  /* Assurez-vous qu'il n'y a pas de fond */
+  border: none;
+  /* Assurez-vous qu'il n'y a pas de bordure */
+  padding: 0;
+
+}
+
+.alignement_favoris_recette {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-content: stretch; */
+  align-items: flex-start;
+}
+
+.bouton_voir_recette {
+  text-decoration: none;
+  background-color: #e3f2fd;
+  border-radius: 5px;
+  border: 1px solid lightblue;
+  /* color: darkgray; */
+  font-weight: 400;
+}
+.flex_like_recette{
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-direction: row;
+}
+
+
+.deletteRecette{
+  border: none;
+  background: inherit;
+}

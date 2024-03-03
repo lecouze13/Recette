@@ -39,3 +39,12 @@ textarea {
     border: none;
     background: #e3f2fd;
 } */
+.Titre_close_boutton{
+
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-between;
+  align-content: center;
+  align-items: stretch;
+}

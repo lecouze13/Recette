@@ -1,28 +1,35 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MessageService } from '../../message.service';
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-formulaire-ingredient',
   templateUrl: './formulaire-ingredient.component.html',
-  styleUrls: ['./formulaire-ingredient.component.css']
+  styleUrls: ['./formulaire-ingredient.component.css'],
 })
 export class FormulaireIngredientComponent {
   Data_enum: any;
   @Input() isAffichedIngredient = false;
+  @Output() close_formulaire2 = new EventEmitter<boolean>();
+  isFormulaireOpen = false;
+
   formData: any = {
     NomIngredient: '',
     Type: '',
-    kcal: ''
-
-
+    kcal: '',
   };
-  constructor(private messageService: MessageService, private http: HttpClient) {
-
+  constructor(
+    private messageService: MessageService,
+    private http: HttpClient
+  ) {
     this.getEnum();
-    http.get("https://flagcdn.com/fr/codes.json").subscribe((data: any) => {
+    http.get('https://flagcdn.com/fr/codes.json').subscribe((data: any) => {
       console.log(data);
-    }
-    );
+    });
+  }
+  close_formulaire_recette() {
+    this.isFormulaireOpen = true;
+    this.close_formulaire2.emit(true);
+
   }
   getEnum() {
     // Appeler la fonction du service pour récupérer les données
@@ -30,12 +37,13 @@ export class FormulaireIngredientComponent {
       this.Data_enum = data;
       // Vous pouvez maintenant traiter les données ici
       console.log(this.Data_enum); // Afficher les données dans la console
-
     });
   }
 
   send_ajout_ingredient() {
-    const NomIngredient = (<HTMLInputElement>document.getElementById('NomIngredient')).value;
+    const NomIngredient = (<HTMLInputElement>(
+      document.getElementById('NomIngredient')
+    )).value;
     const Type = (<HTMLSelectElement>document.getElementById('Type')).value;
     const kcal = (<HTMLInputElement>document.getElementById('calorie')).value;
     // Attribuez les valeurs aux propriétés de formData
@@ -45,17 +53,22 @@ export class FormulaireIngredientComponent {
 
     console.log(this.formData);
     // Envoyer les données au format JSON
-    this.http.post('https://lorenzo-geano-etu.pedaweb.univ-amu.fr/extranet/CuisineLOLO/ajout_ingredient.php', this.formData)
-      .subscribe(response => {
-        // Traiter la réponse ici si nécessaire
-        console.log(response);
-        location.reload();
-      },
-        error => {
+    this.http
+      .post(
+        'https://lorenzo-geano-etu.pedaweb.univ-amu.fr/extranet/CuisineLOLO/ajout_ingredient.php',
+        this.formData
+      )
+      .subscribe(
+        (response) => {
+          // Traiter la réponse ici si nécessaire
+          console.log(response);
+          location.reload();
+        },
+        (error) => {
           // Gérer les erreurs ici et afficher les détails de l'erreur
           console.error(error.error.text);
           location.reload();
-
-        });
+        }
+      );
   }
 }

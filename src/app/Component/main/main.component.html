@@ -1,39 +1,56 @@
-<div class="container-fluid">
-    <nav class="navbar sticky-top navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="">Cuisine LOLO</a>
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-                <button class="Bouton_affichage_from_ajout_recette" (click)="affichage_form_ajout_recette()">Ajouter une
-                    recette
-                </button>
+<div class="div_header" style="width: 100%; margin: 0; padding: 0">
+  <nav class="navbar sticky-top navbar-light" style="background-color: #e3f2fd">
+    <a class="navbar-brand" href="" style="margin-left: 48px">Cuisine LOLO</a>
+    <ul class="nav justify-content-center" style="align-items: center">
+      <li class="nav-item">
+        <button class="Bouton_affichage_from_ajout_recette" (click)="affichage_form_ajout_recette()">
+          Ajouter une recette
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="Bouton_affichage_from_ajout_recette" (click)="affichage_form_ajout_ingredient()">
+          Ajout ingrédient
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="Bouton_affichage_from_ajout_recette" (click)="GoToPAGEADMIN()">
+          Mode Admin
+        </button>
+      </li>
 
-            </li>
-            <li class="nav-item">
-                <button class="Bouton_affichage_from_ajout_recette" (click)="affichage_form_ajout_ingredient()">
-                    Ajout ingrédient
-                </button>
+      <li class="nav-item">
+        <a class="nav-link" href="Login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Register">Register</a>
+      </li>
 
-            </li>
-            <!-- <li class="nav-item">
+      <!-- <li class="nav-item">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="text"
+            placeholder="Search"
+            aria-label="Search"
+            [(ngModel)]="searchText"
+            name="search"
+            (change)="filter()"
+
+          />
+        </form>
+      </li> -->
+      <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li> -->
-        </ul>
-    </nav>
+    </ul>
+  </nav>
 </div>
 
-<app-formulaire-recette [isAffiched]="isAffiched"></app-formulaire-recette>
-<app-formulaire-ingredient [isAffichedIngredient]="isAffichedIngredient"></app-formulaire-ingredient>
+<app-formulaire-recette [isAffiched]="isAffiched"
+  (close_formulaire)="Close_form_recette($event)"></app-formulaire-recette>
+<app-formulaire-ingredient [isAffichedIngredient]="isAffichedIngredient"
+  (close_formulaire2)="Close_form_ingredient($event)"></app-formulaire-ingredient>
 <app-liste-recette></app-liste-recette>
-
-Liste des des choses a faire :
-
-
-
-<br>faire l'ajout de note dans le formulaire
-
-<br>faire l'envoie de donnée pour like dislike et pour favoris
-<br> penser a rajoiuter des colonne comme par exemple : like disloke nm de portion
-<br>rapidite : cout : etc

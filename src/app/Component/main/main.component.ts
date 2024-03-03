@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MessageService } from '../../message.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,6 +11,23 @@ import { Router } from '@angular/router';
 export class MainComponent {
   isAffiched = false;
   isAffichedIngredient = false;
+  searchText = '';
+  filter()
+  {
+    console.log(this.searchText);
+
+  }
+
+  Close_form_recette(newItem: boolean) {
+    if(newItem=true)
+      this.isAffiched=false;
+  }
+  Close_form_ingredient(newItem: boolean) {
+
+    if(newItem=true)
+      this.isAffichedIngredient=false;
+  }
+
   affichage_form_ajout_recette() {
     if (this.isAffiched === false) {
       this.isAffiched = true;
@@ -28,5 +45,9 @@ export class MainComponent {
       this.isAffichedIngredient = false;
     }
 
+  }
+  GoToPAGEADMIN()
+  {
+  window.location.href="./ADMIN"
   }
 }
