@@ -19,9 +19,8 @@ const routes: Routes = [
     { path: 'ADMIN', component: ADMINComponent },
     { path: 'login', component: LoginComponent },
     { path: 'Recommendation', component: RecommendationComponent }
-
-
 ]
+
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
